@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { addMedalList } from "../redux/modules/medalList";
 
 const MedalForm = () => {
   const [country, setCountry] = useState("");
   const [goldMedal, setGoldMedal] = useState(0);
   const [silverMedal, setSilverMedal] = useState(0);
   const [bronzeMedal, setBronzeMedal] = useState(0);
+  const total = goldMedal + silverMedal + bronzeMedal;
 
   const dispatch = useDispatch();
 
@@ -14,15 +16,15 @@ const MedalForm = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch({
-            type: "ADD_MEDAL",
-            payload: {
+          dispatch(
+            addMedalList({
               country,
-              goldMedal,
-              silverMedal,
-              bronzeMedal,
-            },
-          });
+              goldMedal: +goldMedal,
+              silverMedal: +silverMedal,
+              bronzeMedal: +bronzeMedal,
+              total: +goldMedal + +silverMedal + +bronzeMedal,
+            })
+          );
         }}
       >
         <label htmlFor="country">
