@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteMedalList } from "../redux/modules/medalList";
 
 const MedalList = () => {
   const medalList = useSelector((state) => state.medalList);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -32,9 +33,7 @@ const MedalList = () => {
                 <td>
                   <button
                     onClick={() => {
-                      dispatch({
-                        type: "DELETE_MEDAL",
-                      });
+                      dispatch(deleteMedalList(country));
                     }}
                   >
                     삭제
