@@ -39,7 +39,9 @@ export const sortMedal = (payload) => {
 export const medalList = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MEDAL:
-      return [...state, action.payload];
+      return [...state, action.payload].sort(
+        (a, b) => b.goldMedal - a.goldMedal
+      );
     case DELETE_MEDAL:
       return [...state].filter((medal) => medal.country !== action.payload);
     case UPDATE_MEDAL:
