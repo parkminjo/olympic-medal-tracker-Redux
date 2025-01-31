@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteMedalList } from "../redux/modules/medalList";
 import styled from "styled-components";
 
+/** styled component */
 const TableContainer = styled.table`
   display: flex;
   flex-direction: column;
@@ -53,10 +54,12 @@ const Button = styled.button`
   }
 `;
 
+/** MedalList */
 const MedalList = () => {
   const medalList = useSelector((state) => state.medalList);
   const dispatch = useDispatch();
 
+  /** UI */
   return (
     <div>
       <TableContainer>

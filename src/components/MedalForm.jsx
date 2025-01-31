@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addMedalList, updateMedalList } from "../redux/modules/medalList";
 import styled from "styled-components";
 
+/** styled component */
 const FormContainer = styled.form`
   width: 100%;
   text-align: center;
@@ -33,6 +34,7 @@ const Button = styled.button`
   }
 `;
 
+/** MedalForm */
 const MedalForm = () => {
   // 나라별 메달 state
   const [countryMedal, setCountryMedal] = useState({
@@ -66,6 +68,7 @@ const MedalForm = () => {
     });
   };
 
+  /** UI */
   return (
     <div className="form-container">
       <FormContainer
