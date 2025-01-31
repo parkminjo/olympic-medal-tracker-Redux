@@ -4,6 +4,8 @@ const initialState = [];
 const ADD_MEDAL = "ADD_MEDAL";
 const DELETE_MEDAL = "DELETE_MEDAL";
 const UPDATE_MEDAL = "UPDATE_MEDAL";
+const SORT_GOLD_MEDAL = "SORT_GOLD_MEDAL";
+const SORT_TOTAL_MEDAL = "SORT_TOTAL_MEDAL";
 
 // action creator
 export const addMedalList = (payload) => {
@@ -27,6 +29,18 @@ export const updateMedalList = (payload) => {
   };
 };
 
+export const sortGoldMedal = () => {
+  return {
+    type: SORT_GOLD_MEDAL,
+  };
+};
+export const sortTotalMedal = (payload) => {
+  return {
+    type: SORT_TOTAL_MEDAL,
+    payload,
+  };
+};
+
 // reducer
 export const medalList = (state = initialState, action) => {
   switch (action.type) {
@@ -43,6 +57,8 @@ export const medalList = (state = initialState, action) => {
           return medal;
         }
       });
+    case SORT_GOLD_MEDAL:
+      return [...state].sort((a, b) => b.goldMedal - a.goldMedal);
     default:
       return state;
   }

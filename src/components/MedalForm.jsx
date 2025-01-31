@@ -12,6 +12,13 @@ const MedalForm = () => {
   const medalList = useSelector((state) => state.medalList);
   const dispatch = useDispatch();
 
+  const reset = () => {
+    setCountry("");
+    setGoldMedal(0);
+    setSilverMedal(0);
+    setBronzeMedal(0);
+  };
+
   return (
     <div className="form-container">
       <form
@@ -30,6 +37,7 @@ const MedalForm = () => {
               total,
             })
           );
+          reset();
         }}
       >
         <label htmlFor="country">
@@ -93,6 +101,7 @@ const MedalForm = () => {
                 bronzeMedal,
               })
             );
+            reset();
           }}
         >
           업데이트
