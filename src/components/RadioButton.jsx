@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { sortMedal } from "../redux/modules/medalList";
+import styled from "styled-components";
+
+const Input = styled.input`
+  margin-top: 2rem;
+`;
 
 const RadioButton = () => {
   const [sortType, setSortType] = useState("goldSort");
@@ -9,7 +14,7 @@ const RadioButton = () => {
   return (
     <div>
       <label htmlFor="goldSort">
-        <input
+        <Input
           type="radio"
           name="sorting"
           id="goldSort"
@@ -23,7 +28,7 @@ const RadioButton = () => {
         금메달순
       </label>
       <label htmlFor="totalSort">
-        <input
+        <Input
           type="radio"
           name="sorting"
           id="totalSort"

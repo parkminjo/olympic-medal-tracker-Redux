@@ -1,6 +1,37 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addMedalList, updateMedalList } from "../redux/modules/medalList";
+import styled from "styled-components";
+
+const FormContainer = styled.form`
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+`;
+
+const Input = styled.input`
+  width: 150px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+`;
+
+const Button = styled.button`
+  border: none;
+  border-radius: 5px;
+  background-color: #ff9d23;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+
+  &:hover {
+    opacity: 80%;
+  }
+`;
 
 const MedalForm = () => {
   // 나라별 메달 state
@@ -37,7 +68,7 @@ const MedalForm = () => {
 
   return (
     <div className="form-container">
-      <form
+      <FormContainer
         onSubmit={(e) => {
           e.preventDefault();
           if (
@@ -52,7 +83,7 @@ const MedalForm = () => {
       >
         <label htmlFor="country">
           국가명
-          <input
+          <Input
             type="text"
             id="country"
             required
@@ -63,7 +94,7 @@ const MedalForm = () => {
         </label>
         <label htmlFor="goldMedal">
           금메달
-          <input
+          <Input
             type="number"
             id="goldMedal"
             required
@@ -74,7 +105,7 @@ const MedalForm = () => {
         </label>
         <label htmlFor="silverMedal">
           은메달
-          <input
+          <Input
             type="number"
             id="silverMedal"
             required
@@ -85,7 +116,7 @@ const MedalForm = () => {
         </label>
         <label htmlFor="bronzeMedal">
           동메달
-          <input
+          <Input
             type="number"
             id="bronzeMedal"
             required
@@ -94,8 +125,8 @@ const MedalForm = () => {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">추가</button>
-        <button
+        <Button type="submit">추가</Button>
+        <Button
           type="button"
           onClick={() => {
             if (
@@ -110,8 +141,8 @@ const MedalForm = () => {
           }}
         >
           업데이트
-        </button>
-      </form>
+        </Button>
+      </FormContainer>
     </div>
   );
 };
