@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { sortGoldMedal } from "../redux/modules/medalList";
+import { sortMedal } from "../redux/modules/medalList";
 
 const RadioButton = () => {
+  const [sortType, setSortType] = useState("goldSort");
+
   const dispatch = useDispatch();
   return (
     <div>
@@ -12,12 +14,26 @@ const RadioButton = () => {
           name="sorting"
           id="goldSort"
           value="goldSort"
-          onChange={() => dispatch(sortGoldMedal())}
+          checked={sortType === "goldSort"}
+          onChange={(e) => {
+            dispatch(sortMedal(e.target.value));
+            setSortType("goldSort");
+          }}
         />{" "}
         금메달순
       </label>
       <label htmlFor="totalSort">
-        <input type="radio" name="sorting" id="totalSort" value="totalSort" />{" "}
+        <input
+          type="radio"
+          name="sorting"
+          id="totalSort"
+          value="totalSort"
+          checked={sortType === "totalSort"}
+          onChange={(e) => {
+            dispatch(sortMedal(e.target.value));
+            setSortType("totalSort");
+          }}
+        />{" "}
         합계순
       </label>
     </div>
